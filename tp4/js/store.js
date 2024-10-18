@@ -7,8 +7,7 @@ Pour récuper la liste:    contactStore.getList();
 */
 var contactStore = (function () {
     // variable privée
-    let contactListString = localStorage.getItem("contactList");
-    var contactList = contactListString ? JSON.parse(contactListString) : [];
+
 
     // Expose these functions via an interface while hiding
     // the implementation of the module within the function() block
@@ -22,6 +21,8 @@ var contactStore = (function () {
                 adress: _adress,
                 mail: _mail,
             };
+            let contactListString = localStorage.getItem("contactList");
+            var contactList = contactListString ? JSON.parse(contactListString) : [];
             // ajout du contact à la liste
             contactList.push(contact);
 
@@ -32,12 +33,17 @@ var contactStore = (function () {
             return contactList;
         },
         reset: function () {
+
             localStorage.removeItem("contactList");
+            let contactListString = localStorage.getItem("contactList");
+            var contactList = contactListString ? JSON.parse(contactListString) : [];
 
             return contactList;
         },
 
         getList: function () {
+            let contactListString = localStorage.getItem("contactList");
+            var contactList = contactListString ? JSON.parse(contactListString) : [];
             return contactList;
         },
     };
@@ -79,6 +85,7 @@ function displayContactList() {
 function resetContacts() {
     // Réinitialiser la liste des contacts en localStorage
     localStorage.removeItem('contactList');
+    contactStore.reset();
     displayContactList(); // Met à jour l'affichage après la réinitialisation
     alert("La liste des contacts a été réinitialisée.");
 }

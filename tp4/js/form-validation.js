@@ -73,6 +73,7 @@ window.onload = function () {
         // Afficher la modale de succès
         var myModalSuccess = new bootstrap.Modal(document.getElementById("myModalSuccess"));
         myModalSuccess.show();
+        displayContactList()
     });
 };
 
