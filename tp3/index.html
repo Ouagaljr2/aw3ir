@@ -1,39 +1,103 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="fr">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>TP3</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <!-- Place favicon.ico in the root directory -->
-
-    <style>
-        body {
-            background-color: #e9ebee;
-            font-family: system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
-            font-size: 16px;
-            margin: 0 auto;
-            max-width: 800px;
-        }
-    </style>
-
-    <!-- Code à dé-commenter si besoin de fichier CSS ou JS -->
-    <!--<link rel="stylesheet" href="style.css">-->
-    <!--<script src="main.js"></script>-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire avec Bootstrap</title>
+    <!-- CSS Bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <!-- Librairie Javascript de Bootstrap -->
+    <script src="js/bootstrap.bundle.js"></script>
 </head>
 
 <body>
-    <nav>
-        <a href="..">🏠 Index</a> / TP3
-    </nav>
-    <h1>tp3</h1>
-    <!-- Add your site or application content here -->
-    <p>Hello world! This is HTML5 Boilerplate.</p>
-    <img src="../galilee.png" alt="Logo Galilee" />
+    <div class="container">
+        <!-- Titre du formulaire -->
+        <h2 class="text-center mt-4">Formulaire avec Bootstrap TP3</h2>
+        <div class="col-md-8 mx-auto"> <!-- Ajout de col-md-8 et mx-auto pour centrer le formulaire -->
+            <form id="myForm" class="row g-3 mt-3">
+                <div class="col-md-6">
+                    <label for="validationServer01" class="form-label">Prénom</label>
+                    <input type="text" class="form-control" id="validationServer01" required>
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Le prénom doit avoir au moins 5 caractères.</div>
+                </div>
+                <div class="col-md-6">
+                    <label for="validationServer02" class="form-label">Nom</label>
+                    <input type="text" class="form-control" id="validationServer02" required>
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Le nom doit avoir au moins 5 caractères.</div>
+                </div>
+                <!-- Champ Email sur une nouvelle ligne -->
+                <div class="col-md-12">
+                    <label for="validationServerUsername" class="form-label">Email</label>
+                    <div class="input-group has-validation">
+                        <span class="input-group-text" id="inputGroupPrepend3">@</span>
+                        <input type="text" class="form-control" id="validationServerUsername" required>
+                        <div class="invalid-feedback">Veuillez fournir un email valide.</div>
+                    </div>
+                </div>
+                <!-- Champ Adresse sur une nouvelle ligne -->
+                <div class="col-md-12">
+                    <label for="validationServer03" class="form-label">Adresse</label>
+                    <input type="text" class="form-control" id="validationServer03" required>
+                    <div class="invalid-feedback">Veuillez fournir une adresse valide.</div>
+                </div>
+                <!-- Champ Date de naissance -->
+                <div class="col-md-6">
+                    <label for="birthday" class="form-label">Date de naissance</label>
+                    <input type="date" class="form-control" id="birthday" required>
+                    <div class="invalid-feedback">La date de naissance ne peut pas être dans le futur.</div>
+                </div>
+                <div class="col-12">
+                    <button class="btn btn-primary" type="submit">Soumettre le formulaire</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modale d'erreur -->
+    <div class="modal fade" id="myModalError" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Erreur</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Veuillez remplir correctement tous les champs.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modale de succès -->
+    <div class="modal fade" id="myModalSuccess" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Succès</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Tous les champs sont valides ! Voici la carte de votre adresse :</p>
+                    <a id="mapLink" href="#" target="_blank">
+                        <img id="mapImage" src="" alt="Carte" class="img-fluid" />
+                    </a>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Bootstrap et validation -->
+    <script src="js/form-validation.js"></script>
 </body>
 
 </html>
