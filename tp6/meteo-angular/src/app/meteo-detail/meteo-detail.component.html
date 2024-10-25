@@ -1,5 +1,4 @@
 <!-- meteo de la ville selectionnée -->
-<!-- meteo de la ville selectionnée -->
 <div *ngIf="meteo && meteo.cod == 200">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
@@ -40,16 +39,16 @@
                 <i class="wi wi-windy"></i> Vent: {{meteo.wind.speed}} km/h
             </li>
             <li class="list-group-item">
-                <i class="wi wi-sunrise"></i> Levé du soleil: {{meteo.sys.sunrise}} //
-                Date au format Timestamp à transformer au format 'H:mm'
+                <i class="wi wi-sunrise"></i> Levé du soleil: {{ meteo.sys.sunrise * 1000 | date: 'H:mm' }}
             </li>
             <li class="list-group-item">
-                <i class="wi wi-sunset"></i>Couché du soleil: {{meteo.sys.sunset}} //
-                Date au format Timestamp à transformer au format 'H:mm'
+                <i class="wi wi-sunset"></i> Couché du soleil: {{ meteo.sys.sunset * 1000 | date: 'H:mm' }}
             </li>
+
         </ul>
     </div>
 </div>
+
 
 <div class="alert alert-danger" *ngIf="meteo && meteo.cod != 200">
     {{meteo.message}} (erreur {{meteo.cod}})

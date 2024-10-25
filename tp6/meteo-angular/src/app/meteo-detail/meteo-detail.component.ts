@@ -10,6 +10,7 @@ import { MeteoService } from "../services/meteo.service";
 export class MeteoDetailComponent implements OnInit {
   meteo: any;
   latlon: string = "";
+  forecast: any = null
 
   constructor(
     private route: ActivatedRoute,
@@ -36,4 +37,17 @@ export class MeteoDetailComponent implements OnInit {
         .catch((fail) => (this.meteo = fail));
     }
   }
+  getForecast(): void {
+    const name = this.route.snapshot.paramMap.get("name");
+    if (name) {
+      this.meteoService
+        .getForecast(name)
+        .then(response => {
+          // Filtrer les prévisions pour obtenir une par jour (par exemple à la même heure chaque jour)
+          this.forecast;
+        })
+        .catch(fail => console.error(fail));
+    }
+  }
+
 }
