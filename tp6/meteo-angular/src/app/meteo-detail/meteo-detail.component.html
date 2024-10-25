@@ -49,9 +49,34 @@
     </div>
 </div>
 
+<div *ngIf="meteo && meteo.cod == 200">
+    <!-- Affichage existant de la météo du jour -->
+
+    <h3 class="text-center">Prévisions sur les 5 prochains jours</h3>
+    <div class="forecast-container" style="display: flex; justify-content: space-around; overflow-x: auto;">
+        <div *ngFor="let day of forecast" class="card" style="width: 150px; margin: 10px;">
+            <div class="card-header text-center">
+                {{ day.dt * 1000 | date : "EEEE d LLLL" }}
+            </div>
+            <div class="card-body text-center">
+                <h5 class="card-title">
+                    <i [class]="'wi wi-owm-day-' + day.weather[0].id"></i>
+                    {{ day.main.temp }}
+                    <i class="wi wi-celsius"></i>
+                </h5>
+                <p class="card-text">{{ day.weather[0].description }}</p>
+                <p>Nuage: {{ day.clouds.all }}%</p>
+                <p>Humidité: {{ day.main.humidity }}%</p>
+                <p>Vent: {{ day.wind.speed }} km/h</p>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="alert alert-danger" *ngIf="meteo && meteo.cod != 200">
     {{meteo.message}} (erreur {{meteo.cod}})
 </div>
+
+
 
 <hr />
